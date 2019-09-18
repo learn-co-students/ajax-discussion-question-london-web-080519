@@ -19,9 +19,8 @@ let dob = document.querySelector('#date_of_birth')
 
 
 // ------- define functions, and their corresponding event listeners ------- //
-
-function addName(firstname, lastname, title){
-  name.innerText = `${title} ` + `${firstname} ` + `${lastname}` 
+function addName(newname){
+  name.innerText = `${newname['title']} ` + `${newname['first']} ` + `${newname['last']}` 
 }
 
 function addEmail(newemail){
@@ -52,7 +51,6 @@ function addDob(newdob){
   dob.innerText = `${altogether}`
 }
 
-
 // overall function and event listener
 
 function fetchRandomUser() {
@@ -62,7 +60,7 @@ function fetchRandomUser() {
     })
     .then(function(json){
       newUser = json["results"][0]
-      addName(newUser["name"]['first'], newUser["name"]['last'], newUser["name"]['title'])
+      addName(newUser["name"])
       addEmail(newUser["email"])
       addLocation(newUser['location'])
       addPhone(newUser['phone'])
